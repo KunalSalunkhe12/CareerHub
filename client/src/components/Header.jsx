@@ -21,9 +21,6 @@ const Header = () => {
         <li className="border border-black px-5 py-2 rounded-lg font-bold bg-lime-700 text-white hover:bg-black cursor-pointer">
           Sign in
         </li>
-        <li className="border border-black px-5 py-2 rounded-lg font-bold hover:bg-black hover:text-white cursor-pointer">
-          Log in
-        </li>
       </ul>
     </nav>
   );
