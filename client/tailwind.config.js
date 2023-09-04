@@ -4,11 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        c_green: "#03b57b",
-        c_white: "#fefefe",
-        c_grey: "595456",
-        c_black: "#323232",
-        c_lightgrey: "#ea940c"
+        custom_green: "#03b57b",
+        custom_white: "#fefefe",
+        custom_grey: "#595456",
+        custom_black: "#272829",
+        custom_orange: "#ea940c"
       }
     },
   },
