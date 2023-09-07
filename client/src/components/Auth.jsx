@@ -21,7 +21,7 @@ const Auth = () => {
           <h1 className="mb-8 text-3xl text-center">
             {isSignup ? "Sign Up" : "Sign in"}
           </h1>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)} noValidate>
             {isSignup && (
               <input
                 type="text"
@@ -43,6 +43,10 @@ const Auth = () => {
                   value: true,
                   message: "Please enter your email",
                 },
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Invalid email address",
+                },
               })}
               placeholder="Email"
             />
@@ -55,6 +59,10 @@ const Auth = () => {
                   value: true,
                   message: "Please enter your password",
                 },
+                minLength: {
+                  value: 6,
+                  message: "Password must have at least 6 characters",
+                },
               })}
               placeholder="Password"
             />
@@ -66,6 +74,10 @@ const Auth = () => {
                   required: {
                     value: true,
                     message: "Please confirm your password",
+                  },
+                  minLength: {
+                    value: 6,
+                    message: "Password must have at least 6 characters",
                   },
                 })}
                 placeholder="Confirm Password"
