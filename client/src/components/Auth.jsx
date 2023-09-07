@@ -66,6 +66,7 @@ const Auth = () => {
               })}
               placeholder="Password"
             />
+
             {isSignup && (
               <input
                 type="password"
