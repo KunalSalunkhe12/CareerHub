@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 
+import { signin, signup } from "../api";
+
 const Auth = () => {
   const [isSignup, setIsSignup] = useState(false);
   const { register, handleSubmit, control } = useForm();
@@ -10,15 +12,18 @@ const Auth = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
   };
 
-  const onSubmit = (data) => {
-    console.log(data);
-    fetch(`http://localhost:5000/user/${isSignup ? "signup" : "signin"}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    }).then((res) => {
-      console.log(res);
-    });
+  const onSubmit = async (formData) => {
+    try {
+      if (isSignup) {
+        const { data } = await signup(formData);
+        console.log(data);
+      } else {
+        const { data } = await signin(formData);
+        console.log(data);
+      }
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
   };
 
   return (
