@@ -6,7 +6,12 @@ import { signin, signup } from "../api";
 
 const Auth = () => {
   const [isSignup, setIsSignup] = useState(false);
-  const { register, handleSubmit, control } = useForm();
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm();
 
   const switchMode = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
@@ -35,67 +40,57 @@ const Auth = () => {
           </h1>
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             {isSignup && (
+              <div className="mb-4">
+                <input
+                  type="text"
+                  className="block border border-grey-light w-full p-3 rounded mb-4"
+                  placeholder="Full Name"
+                  {...register("name", {
+                    required: {
+                      value: true,
+                      message: "Please enter your name",
+                    },
+                  })}
+                />
+                <p className="text-xs text-red-500">{errors.name?.message}</p>
+              </div>
+            )}
+            <div className="mb-4">
               <input
                 type="text"
                 className="block border border-grey-light w-full p-3 rounded mb-4"
-                placeholder="Full Name"
-                {...register("name", {
+                {...register("email", {
                   required: {
                     value: true,
-                    message: "Please enter your name",
+                    message: "Please enter your email",
+                  },
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: "Invalid email address",
                   },
                 })}
+                placeholder="Email"
               />
-            )}
-            <input
-              type="text"
-              className="block border border-grey-light w-full p-3 rounded mb-4"
-              {...register("email", {
-                required: {
-                  value: true,
-                  message: "Please enter your email",
-                },
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Invalid email address",
-                },
-              })}
-              placeholder="Email"
-            />
-
-            <input
-              type="password"
-              className="block border border-grey-light w-full p-3 rounded mb-4"
-              {...register("password", {
-                required: {
-                  value: true,
-                  message: "Please enter your password",
-                },
-                minLength: {
-                  value: 6,
-                  message: "Password must have at least 6 characters",
-                },
-              })}
-              placeholder="Password"
-            />
-
-            {isSignup && (
+              <p className="text-xs text-red-500">{errors.email?.message}</p>
+            </div>
+            <div className="mb-4">
               <input
                 type="password"
                 className="block border border-grey-light w-full p-3 rounded mb-4"
-                {...register("confirmPassword", {
+                {...register("password", {
                   required: {
                     value: true,
-                    message: "Please confirm your password",
+                    message: "Please enter your password",
                   },
                   minLength: {
                     value: 6,
                     message: "Password must have at least 6 characters",
                   },
                 })}
-                placeholder="Confirm Password"
+                placeholder="Password"
               />
-            )}
+              <p className="text-xs text-red-500">{errors.password?.message}</p>
+            </div>
             <button
               type="submit"
               className="bg-custom_green w-full text-center py-3 rounded bg-green text-white hover:bg-green-dark focus:outline-none my-1"
