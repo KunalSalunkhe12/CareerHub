@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import toast from "react-hot-toast";
@@ -13,6 +14,7 @@ const Auth = () => {
     control,
     formState: { errors, isSubmitting },
   } = useForm();
+  const navigate = useNavigate();
 
   const switchMode = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
@@ -24,13 +26,14 @@ const Auth = () => {
         const { data } = await signup(formData);
         console.log(data);
         toast.success("Sign up successfully");
+        navigate("/home");
       } else {
         const { data } = await signin(formData);
         console.log(data);
         toast.success("Sign in successfully");
+        navigate("/home");
       }
     } catch (error) {
-      console.log(error.response.data.message);
       toast.error(error.response.data.message);
     }
   };
