@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
+import toast from "react-hot-toast";
 
 import { signin, signup } from "../api";
 
@@ -10,7 +11,7 @@ const Auth = () => {
     register,
     handleSubmit,
     control,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm();
 
   const switchMode = () => {
@@ -22,12 +23,15 @@ const Auth = () => {
       if (isSignup) {
         const { data } = await signup(formData);
         console.log(data);
+        toast.success("Sign up successfully");
       } else {
         const { data } = await signin(formData);
         console.log(data);
+        toast.success("Sign in successfully");
       }
     } catch (error) {
       console.log(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -94,8 +98,13 @@ const Auth = () => {
             <button
               type="submit"
               className="bg-custom_green w-full text-center py-3 rounded bg-green text-white hover:bg-green-dark focus:outline-none my-1"
+              disabled={isSubmitting}
             >
-              {isSignup ? "Create Account" : "Sign in"}
+              {isSubmitting
+                ? "Submitting..."
+                : isSignup
+                ? "Create Account"
+                : "Sign in"}
             </button>
           </form>
         </div>

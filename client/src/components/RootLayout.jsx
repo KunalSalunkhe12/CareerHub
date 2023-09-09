@@ -1,5 +1,6 @@
 import Header from "./Header";
 import { Outlet } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 const RootLayout = () => {
   return (
@@ -8,6 +9,13 @@ const RootLayout = () => {
       <main>
         <Outlet />
       </main>
+      <Toaster
+        toastOptions={{
+          style: {
+            background: "#fefefe",
+          },
+        }}
+      />
     </div>
   );
 };
