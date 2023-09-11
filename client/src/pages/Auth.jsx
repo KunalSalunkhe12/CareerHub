@@ -3,10 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import toast from "react-hot-toast";
+import { setCredentials, logOut } from "../features/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 import { signin, signup } from "../api";
 
 const Auth = () => {
+  let store = useSelector((state) => state.auth);
+  console.log(store);
+  let dispatch = useDispatch();
   const [isSignup, setIsSignup] = useState(false);
   const {
     register,
@@ -26,11 +31,13 @@ const Auth = () => {
         const { data } = await signup(formData);
         console.log(data);
         toast.success("Sign up successfully");
+        dispatch(setCredentials(data));
         navigate("/home");
       } else {
         const { data } = await signin(formData);
         console.log(data);
         toast.success("Sign in successfully");
+        dispatch(setCredentials(data))
         navigate("/home");
       }
     } catch (error) {
