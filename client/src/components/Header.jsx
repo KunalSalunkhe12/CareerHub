@@ -16,10 +16,16 @@ const Header = () => {
 
   return (
     <nav className="px-12 py-3 flex justify-between items-center bg-custom_black">
-      <Link to="/">
+      <Link className="flex gap-2 items-center" to="/">
         <h1 className="text-3xl font-bold cursor-pointer text-custom_green">
           CareerHub
         </h1>
+        <img
+          width="35"
+          height="35"
+          src="https://img.icons8.com/color/48/000000/goal--v1.png"
+          alt="goal--v1"
+        />
       </Link>
       <ul className="flex items-center gap-7 ml-6 text-white">
         {user && (
