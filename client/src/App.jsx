@@ -3,6 +3,7 @@ import Auth from "./pages/Auth";
 import RootLayout from "./components/RootLayout";
 import Home from "./pages/Home";
 import NotFound from "./components/NotFound";
+import JobTracker from "./pages/JobTracker";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "home",
         element: <Home />,
+      },
+      {
+        path: "job-tracker",
+        element: <JobTracker />,
       },
     ],
   },

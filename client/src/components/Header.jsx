@@ -1,16 +1,18 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setCredentials, logout } from "../redux/features/authSlice";
 
 const Header = () => {
-  let user = useSelector((state) => state.auth.userInfo);
-  let dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.userInfo);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     if (userInfo) {
       dispatch(setCredentials(userInfo));
+      navigate("/home");
     }
   }, []);
 
