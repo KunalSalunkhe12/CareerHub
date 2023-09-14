@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import toast from "react-hot-toast";
-import { setCredentials } from "../features/authSlice";
+import { setCredentials } from "../redux/features/authSlice";
 import { useDispatch } from "react-redux";
 
 import { signin, signup } from "../api";

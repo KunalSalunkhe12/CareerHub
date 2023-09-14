@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logOut } from "../features/auth/authSlice";
+import { logout } from "../redux/features/authSlice";
+
 const Header = () => {
-  let store = useSelector((state) => state.auth);
+  let user = useSelector((state) => state.auth.userInfo);
+  console.log(user);
   let dispatch = useDispatch();
-  console.log(store.userInfo);
+
   return (
     <nav className="px-12 py-3 flex justify-between items-center bg-custom_black">
       <Link to="/">
@@ -26,19 +28,19 @@ const Header = () => {
           Career Blogs
         </li>
       </ul>
-      {store.userInfo === null ? (
+      {user === null ? (
         <Link
           to="/auth"
           className="px-5 py-1 rounded-lg font-bold bg-custom_green text-white hover:bg-custom_black border-2 border-custom_green cursor-pointer"
         >
-          Signin
+          Sign In
         </Link>
       ) : (
         <Link
-          to="/" // You can specify the logout route here
+          to="/"
           className="px-5 py-1 rounded-lg font-bold bg-custom_green text-white hover:bg-custom_black border-2 border-custom_green cursor-pointer"
           onClick={() => {
-            dispatch(logOut());
+            dispatch(logout());
           }}
         >
           Logout
