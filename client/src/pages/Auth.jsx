@@ -56,7 +56,7 @@ const Auth = () => {
                 <input
                   type="text"
                   className="block border border-grey-light w-full p-3 rounded mb-4"
-                  placeholder="Full Name"
+                  placeholder="Full Name*"
                   {...register("name", {
                     required: {
                       value: true,
@@ -81,7 +81,7 @@ const Auth = () => {
                     message: "Invalid email address",
                   },
                 })}
-                placeholder="Email"
+                placeholder="Email*"
               />
               <p className="text-xs text-red-500">{errors.email?.message}</p>
             </div>
@@ -99,7 +99,7 @@ const Auth = () => {
                     message: "Password must have at least 6 characters",
                   },
                 })}
-                placeholder="Password"
+                placeholder="Password*"
               />
               <p className="text-xs text-red-500">{errors.password?.message}</p>
             </div>
