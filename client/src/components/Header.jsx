@@ -5,7 +5,6 @@ import { setCredentials, logout } from "../redux/features/authSlice";
 
 const Header = () => {
   let user = useSelector((state) => state.auth.userInfo);
-  console.log(user);
   let dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,17 +22,24 @@ const Header = () => {
         </h1>
       </Link>
       <ul className="flex items-center gap-7 ml-6 text-white">
+        {user && (
+          <>
+            <li className="font-semibold hover:text-custom_orange cursor-pointer">
+              Ai Resume Builder
+            </li>
+            <li className="font-semibold hover:text-custom_orange cursor-pointer">
+              Job Application Tracker
+            </li>
+            <li className="font-semibold hover:text-custom_orange cursor-pointer">
+              Career Blogs
+            </li>
+          </>
+        )}
         <li className="font-semibold hover:text-custom_orange cursor-pointer">
-          Ai Resume Builder
-        </li>
-        <li className="font-semibold hover:text-custom_orange cursor-pointer">
-          Job Application Tracker
+          About Us
         </li>
         <li className="font-semibold hover:text-custom_orange cursor-pointer">
           How it works
-        </li>
-        <li className="font-semibold hover:text-custom_orange cursor-pointer">
-          Career Blogs
         </li>
       </ul>
       {user === null ? (
