@@ -1,10 +1,9 @@
 import User from "../models/user.js";
 import bcrypt from "bcryptjs";
-import e from "express";
 import jwt from "jsonwebtoken";
 
 export const signup = async (req, res) => {
-    const { name, email, password, confirmPassword } = req.body;
+    const { name, email, password } = req.body;
     try {
         const existingUser = await User.findOne({ email });
         if (existingUser) return res.status(400).json({ message: "User already exists" });
