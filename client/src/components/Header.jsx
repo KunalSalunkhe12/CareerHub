@@ -1,11 +1,19 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../redux/features/authSlice";
+import { setCredentials, logout } from "../redux/features/authSlice";
 
 const Header = () => {
   let user = useSelector((state) => state.auth.userInfo);
   console.log(user);
   let dispatch = useDispatch();
+
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    if (userInfo) {
+      dispatch(setCredentials(userInfo));
+    }
+  }, []);
 
   return (
     <nav className="px-12 py-3 flex justify-between items-center bg-custom_black">
