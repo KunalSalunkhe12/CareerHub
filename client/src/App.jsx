@@ -4,6 +4,7 @@ import RootLayout from "./components/RootLayout";
 import Home from "./pages/Home";
 import NotFound from "./components/NotFound";
 import JobTracker from "./pages/JobTracker";
+import AddJob from "./components/JobTracker/AddJob";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "job-tracker",
         element: <JobTracker />,
+      },
+      {
+        path: "add-job",
+        element: <AddJob />,
       },
     ],
   },
