@@ -1,18 +1,16 @@
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setCredentials, logout } from "../redux/features/authSlice";
 
 const Header = () => {
   const user = useSelector((state) => state.auth.userInfo);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     if (userInfo) {
       dispatch(setCredentials(userInfo));
-      navigate("/home");
     }
   }, []);
 
@@ -33,21 +31,21 @@ const Header = () => {
         {user && (
           <>
             <li className="font-semibold hover:text-custom_orange cursor-pointer">
-              Ai Resume Builder
+              <NavLink>Ai Resume Builder</NavLink>
             </li>
             <li className="font-semibold hover:text-custom_orange cursor-pointer">
-              Job Application Tracker
+              <NavLink to="/job-tracker">Job Application Tracker</NavLink>
             </li>
             <li className="font-semibold hover:text-custom_orange cursor-pointer">
-              Career Blogs
+              <NavLink>Career Blogs</NavLink>
             </li>
           </>
         )}
         <li className="font-semibold hover:text-custom_orange cursor-pointer">
-          About Us
+          <NavLink>About Us</NavLink>
         </li>
         <li className="font-semibold hover:text-custom_orange cursor-pointer">
-          How it works
+          <NavLink>How it works</NavLink>
         </li>
       </ul>
       {user === null ? (

@@ -6,7 +6,7 @@ const RootLayout = () => {
   return (
     <div>
       <Header />
-      <main>
+      <main className="py-8 px-6">
         <Outlet />
       </main>
       <Toaster
