@@ -2,12 +2,12 @@ const AddJob = () => {
   return (
     <div className="flex justify-center bg-gray-100 p-10">
       <div className="p-4 w-1/3 bg-white">
-        <h2 className="text-custom_black text-2xl font-semibold mb-6">
+        <h2 className="text-custom_green text-2xl font-semibold mb-6">
           Add a new Job Post
         </h2>
         <form className="">
           <div className="flex flex-col my-4">
-            <label className="text-lg font-medium" htmlFor="title">
+            <label className="font-medium" htmlFor="title">
               Job Title
             </label>
             <input
@@ -18,7 +18,7 @@ const AddJob = () => {
             />
           </div>
           <div className="flex flex-col my-4">
-            <label className="text-lg font-medium" htmlFor="url">
+            <label className="font-medium" htmlFor="url">
               URL for original Job Posting
             </label>
             <input
@@ -29,7 +29,7 @@ const AddJob = () => {
             />
           </div>
           <div className="flex flex-col my-4">
-            <label className="text-lg font-medium" htmlFor="company">
+            <label className="font-medium" htmlFor="company">
               Company Name
             </label>
             <input
@@ -40,7 +40,7 @@ const AddJob = () => {
             />
           </div>
           <div className="flex flex-col my-4">
-            <label className="text-lg font-medium" htmlFor="location">
+            <label className="font-medium" htmlFor="location">
               Location
             </label>
             <input
@@ -51,23 +51,13 @@ const AddJob = () => {
             />
           </div>
           <div className="flex flex-col my-4">
-            <label className="text-lg font-medium" htmlFor="description">
+            <label className="font-medium" htmlFor="description">
               Job Description
             </label>
-            <input
+            <textarea
+              rows="10"
               className="block border border-grey-light w-full p-3 rounded mb-4"
-              type="text"
-              name="description"
-              id="description"
-            />
-          </div>
-          <div className="flex flex-col my-4">
-            <label className="text-lg font-medium" htmlFor="description">
-              Job Description
-            </label>
-            <input
-              className="block border border-grey-light w-full p-3 rounded mb-4"
-              type="text"
+              type=""
               name="description"
               id="description"
             />
