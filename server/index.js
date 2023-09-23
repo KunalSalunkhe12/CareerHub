@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 import userRouter from "./routes/user.js";
+import jobRouter from "./routes/job.js";
 
 const app = express();
 dotenv.config();
@@ -16,6 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRouter)
+app.use("/job", jobRouter)
 
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
