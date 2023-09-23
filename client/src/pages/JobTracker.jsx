@@ -1,7 +1,22 @@
+import { useEffect, useState } from "react";
 import { IoMdAddCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { getJobs } from "../api/index";
+import JobList from "../components/JobTracker/JobList";
 
 const JobTracker = () => {
+  const [jobs, setJobs] = useState([]);
+
+  useEffect(() => {
+    const getAllJobs = async () => {
+      const { data } = await getJobs();
+      setJobs(data);
+    };
+    getAllJobs();
+  }, []);
+
+  console.log(jobs);
+
   return (
     <div className="px-6 py-8">
       <Link to="/add-job">
@@ -10,30 +25,7 @@ const JobTracker = () => {
           Add a new Job
         </button>
       </Link>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
-        temporibus fugit nisi tempora soluta sint perspiciatis maxime non, velit
-        possimus, quos praesentium! Eligendi et iure consequatur excepturi
-        facilis ducimus perferendis.
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
-        temporibus fugit nisi tempora soluta sint perspiciatis maxime non, velit
-        possimus, quos praesentium! Eligendi et iure consequatur excepturi
-        facilis ducimus perferendis.
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
-        temporibus fugit nisi tempora soluta sint perspiciatis maxime non, velit
-        possimus, quos praesentium! Eligendi et iure consequatur excepturi
-        facilis ducimus perferendis.
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
-        temporibus fugit nisi tempora soluta sint perspiciatis maxime non, velit
-        possimus, quos praesentium! Eligendi et iure consequatur excepturi
-        facilis ducimus perferendis.
-      </div>
+      {jobs && jobs.map((job) => <JobList key={job._id} job={job} />)}
     </div>
   );
 };
