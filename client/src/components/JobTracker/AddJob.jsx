@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { newJob } from "../../api/index";
+import toast from "react-hot-toast";
 
 const AddJob = () => {
   const {
@@ -6,9 +9,19 @@ const AddJob = () => {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm();
+  const navigate = useNavigate();
 
-  const onSubmit = (formData) => {
-    console.log(formData);
+  const onSubmit = async (formData) => {
+    try {
+      const { data } = await newJob(formData);
+      if (data) {
+        toast.success("Job added successfully");
+        navigate("/job-tracker");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Job not added");
+    }
   };
 
   return (
