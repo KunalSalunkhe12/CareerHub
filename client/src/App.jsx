@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import NotFound from "./components/NotFound";
 import JobTracker from "./pages/JobTracker/JobList";
 import AddJob from "./pages/JobTracker/AddJob";
+import JobDetail from "./pages/JobTracker/JobDetail";
 
 const router = createBrowserRouter([
   {
@@ -21,11 +22,20 @@ const router = createBrowserRouter([
       },
       {
         path: "job-tracker",
-        element: <JobTracker />,
-      },
-      {
-        path: "add-job",
-        element: <AddJob />,
+        children: [
+          {
+            index: true,
+            element: <JobTracker />,
+          },
+          {
+            path: "add-job",
+            element: <AddJob />,
+          },
+          {
+            path: ":jobId",
+            element: <JobDetail />,
+          },
+        ],
       },
     ],
   },

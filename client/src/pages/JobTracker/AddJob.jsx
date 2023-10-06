@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { newJob } from "../../api/index";
 import toast from "react-hot-toast";
@@ -125,7 +125,9 @@ const AddJob = () => {
             </p>
           </div>
           <div className="flex justify-end gap-4">
-            <button>Cancel</button>
+            <button>
+              <Link to="/job-tracker">Cancel</Link>
+            </button>
             <button type="submit" className="btn_primary">
               {isSubmitting ? "Saving..." : "Save Job"}
             </button>
