@@ -5,7 +5,7 @@ import JobCard from "../../components/JobTracker/JobCard";
 
 const JobDetail = () => {
   const { jobId } = useParams();
-  const [job, setJob] = useState(null);
+  const [job, setJob] = useState("");
 
   useEffect(() => {
     const getJobDetail = async () => {
@@ -20,14 +20,16 @@ const JobDetail = () => {
     getJobDetail();
   }, [jobId]);
 
+  console.log(job.description);
+
   return (
     <div className="px-6 py-8">
       {job ? (
         <div>
           <JobCard job={job} />
-          <div className="mt-10">
+          <div className="mt-4 p-2">
             <h2 className="text-2xl font-semibold">Job Description</h2>
-            <p className="mt-5">{job.description}</p>
+            <pre className="font-sans mt-2">{job.description}</pre>
           </div>
         </div>
       ) : (

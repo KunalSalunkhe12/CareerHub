@@ -9,7 +9,7 @@ export default {
         custom_grey: "#595456",
         custom_black: "#272829",
         custom_orange: "#ea940c"
-      }
+      },
     },
   },
   plugins: [],
