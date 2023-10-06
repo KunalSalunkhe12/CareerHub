@@ -3,8 +3,8 @@ import Auth from "./pages/Auth";
 import RootLayout from "./components/RootLayout";
 import Home from "./pages/Home";
 import NotFound from "./components/NotFound";
-import JobTracker from "./pages/JobTracker";
-import AddJob from "./components/JobTracker/AddJob";
+import JobTracker from "./pages/JobTracker/JobList";
+import AddJob from "./pages/JobTracker/AddJob";
 
 const router = createBrowserRouter([
   {
