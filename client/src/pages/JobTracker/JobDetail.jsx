@@ -28,8 +28,11 @@ const JobDetail = () => {
         <div>
           <JobCard job={job} />
           <div className="mt-4 p-2">
-            <h2 className="text-2xl font-semibold">Job Description</h2>
-            <pre className="font-sans mt-2">{job.description}</pre>
+            <h2 className="text-lg font-semibold">Job Description</h2>
+            <div className="flex gap-4">
+              <pre className="font-sans mt-2">{job.description}</pre>
+              <p>Hard skills</p>
+            </div>
           </div>
         </div>
       ) : (

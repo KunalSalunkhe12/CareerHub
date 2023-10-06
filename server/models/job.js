@@ -24,7 +24,6 @@ const jobSchema = new mongoose.Schema({
     status: {
         type: String,
         required: true,
-        default: "Bookmarked",
     },
 }, { timestamps: true });
 
