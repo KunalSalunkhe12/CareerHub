@@ -15,8 +15,6 @@ const JobTracker = () => {
     getAllJobs();
   }, []);
 
-  console.log(jobs);
-
   return (
     <div className="px-6 py-8">
       <Link to="/add-job">
@@ -25,7 +23,9 @@ const JobTracker = () => {
           Add a new Job
         </button>
       </Link>
-      {jobs && jobs.map((job) => <JobList key={job._id} job={job} />)}
+      <div className="mt-10 grid grid-cols-5 gap-4">
+        {jobs && jobs.map((job) => <JobList key={job._id} job={job} />)}
+      </div>
     </div>
   );
 };
