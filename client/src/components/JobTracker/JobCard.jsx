@@ -41,7 +41,7 @@ const JobList = ({ job }) => {
         <select
           name="status"
           value={status}
-          className="border-2 border-custom_green text-black p-2 rounded-md font-medium outline-none cursor-pointer shadow-md"
+          className="border-2 border-custom_black text-black p-2 rounded-md font-medium outline-none cursor-pointer shadow-md"
           onChange={handleStatusChange}
         >
           <option className="" value="Bookmarked">

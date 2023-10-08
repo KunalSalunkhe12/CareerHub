@@ -29,9 +29,7 @@ const JobDetail = () => {
           <JobDetailNavbar />
           <div className="flex gap-4 mt-4">
             <div className="p-4 border-2 border-gray-200 rounded-md shadow-md w-1/2">
-              <h2 className="text-lg font-semibold border-b-2 border-custom_green inline">
-                Job Description
-              </h2>
+              <h2 className="text-lg font-semibold">Job Description</h2>
               <pre className="font-sans mt-2 min-h-[20rem]">
                 {job.description}
               </pre>

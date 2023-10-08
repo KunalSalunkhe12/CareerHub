@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { IoMdAddCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { getJobs } from "../../api/index";
-import JobList from "../../components/JobTracker/JobCard";
+
+import JobCard from "../../components/JobTracker/JobCard";
+import JobFilters from "../../components/JobTracker/JobFilters";
 
 const JobTracker = () => {
   const [jobs, setJobs] = useState([]);
@@ -30,7 +32,7 @@ const JobTracker = () => {
   }
 
   return (
-    <div className="px-6 py-8">
+    <div className="px-6 py-4">
       <div className="flex justify-between">
         <h2 className="text-2xl font-semibold">My Jobs</h2>
         <Link to="add-job">
@@ -40,11 +42,12 @@ const JobTracker = () => {
           </button>
         </Link>
       </div>
-      <div className="mt-10 w-2/3 mx-auto">
+      <div className="mt-5 w-2/3 mx-auto">
+        <JobFilters />
         {isLoading ? (
           <div>Loading...</div>
         ) : jobs.length > 0 ? (
-          jobs.map((job) => <JobList key={job._id} job={job} />)
+          jobs.map((job) => <JobCard key={job._id} job={job} />)
         ) : (
           <div>No Jobs</div>
         )}

@@ -6,4 +6,15 @@
   .btn_primary {
     @apply bg-custom_green text-white px-4 py-2 font-medium rounded-md shadow-md;
   }
+
+  .btn_primary_outline {
+    @apply border-2 border-custom_green px-4 py-2 font-medium rounded-md shadow-md;
+  }
+  .btn_dark {
+    @apply bg-custom_black text-white px-4 py-2 font-medium rounded-md shadow-md;
+  }
+
+  .btn_dark_outline {
+    @apply border-2 border-custom_black px-4 py-2 font-medium rounded-md shadow-md;
+  }
 }
