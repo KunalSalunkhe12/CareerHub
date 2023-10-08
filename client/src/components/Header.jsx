@@ -34,18 +34,34 @@ const Header = () => {
               <NavLink>Ai Resume Builder</NavLink>
             </li>
             <li className="font-semibold hover:text-custom_orange cursor-pointer">
-              <NavLink to="/job-tracker">Job Application Tracker</NavLink>
+              <NavLink
+                to="/job-tracker"
+                className={({ isActive }) =>
+                  isActive ? "text-custom_orange" : ""
+                }
+              >
+                Job Application Tracker
+              </NavLink>
             </li>
             <li className="font-semibold hover:text-custom_orange cursor-pointer">
-              <NavLink>Career Blogs</NavLink>
+              <NavLink
+                to="/community"
+                className={({ isActive }) =>
+                  isActive ? "text-custom_orange" : ""
+                }
+              >
+                Career Blogs
+              </NavLink>
             </li>
           </>
         )}
         <li className="font-semibold hover:text-custom_orange cursor-pointer">
-          <NavLink>About Us</NavLink>
-        </li>
-        <li className="font-semibold hover:text-custom_orange cursor-pointer">
-          <NavLink>How it works</NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) => (isActive ? "text-custom_orange" : "")}
+          >
+            About Us
+          </NavLink>
         </li>
       </ul>
       {user === null ? (
