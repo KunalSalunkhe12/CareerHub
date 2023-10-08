@@ -25,11 +25,13 @@ const JobList = ({ job }) => {
   };
 
   return (
-    <div className="mt-5 flex justify-between shadow-md p-4 rounded-md border-2 border-gray-100">
+    <div className="mt-5 flex justify-between shadow-md p-4 rounded-md border-2 border-gray-200">
       <Link to={`/job-tracker/${job._id}`} className="cursor-pointer">
         <div className="flex flex-col gap-1">
-          <h3 className="text-custom_black text-xl font-medium">{job.title}</h3>
-          <h4 className="text-custom_orange">
+          <h3 className="text-custom_black text-xl font-medium hover:underline">
+            {job.title}
+          </h3>
+          <h4 className="text-custom_green">
             {job.company}, {job.location}
           </h4>
           <h4 className="text-custom_grey">{formattedDate}</h4>
@@ -39,22 +41,22 @@ const JobList = ({ job }) => {
         <select
           name="status"
           value={status}
-          className="bg-custom_green text-white p-2 rounded-md font-medium outline-none cursor-pointer"
+          className="border-2 border-custom_green text-black p-2 rounded-md font-medium outline-none cursor-pointer shadow-md"
           onChange={handleStatusChange}
         >
-          <option className="bg-custom_black p-2" value="Bookmarked">
+          <option className="" value="Bookmarked">
             Bookmarked
           </option>
-          <option className="bg-custom_black p-2" value="Applied">
+          <option className="" value="Applied">
             Applied
           </option>
-          <option className="bg-custom_black p-2" value="Interview">
+          <option className="" value="Interview">
             Interview
           </option>
-          <option className="bg-custom_black p-2" value="Offer">
+          <option className="" value="Offer">
             Offer
           </option>
-          <option className="bg-custom_black p-2" value="Rejected">
+          <option className="" value="Rejected">
             Rejected
           </option>
         </select>

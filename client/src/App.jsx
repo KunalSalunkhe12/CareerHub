@@ -6,6 +6,9 @@ import NotFound from "./components/NotFound";
 import JobTracker from "./pages/JobTracker/JobList";
 import AddJob from "./pages/JobTracker/AddJob";
 import JobDetail from "./pages/JobTracker/JobDetail";
+import Guidance from "./components/JobTracker/Guidance";
+import Checklist from "./components/JobTracker/Checklist";
+import Templates from "./components/JobTracker/Templates";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +37,20 @@ const router = createBrowserRouter([
           {
             path: ":jobId",
             element: <JobDetail />,
+            children: [
+              {
+                index: true,
+                element: <Guidance />,
+              },
+              {
+                path: "checklist",
+                element: <Checklist />,
+              },
+              {
+                path: "templates",
+                element: <Templates />,
+              },
+            ],
           },
         ],
       },
