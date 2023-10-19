@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import { useParams, Outlet } from "react-router-dom";
+import { useParams, Outlet, Link } from "react-router-dom";
 import { getJob } from "../../api/index";
 
 import JobCard from "../../components/JobTracker/JobCard";
 import JobDetailNavbar from "../../components/JobTracker/JobDetailNavbar";
+
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 const JobDetail = () => {
   const { jobId } = useParams();
@@ -23,6 +25,14 @@ const JobDetail = () => {
 
   return (
     <div className="px-6 py-4">
+      <div>
+        <Link
+          to=".."
+          className="text-sm underline font-medium flex gap-2 items-center text-custom_green"
+        >
+          <AiOutlineArrowLeft /> Back to Job List
+        </Link>
+      </div>
       {job ? (
         <div>
           <JobCard job={job} />
