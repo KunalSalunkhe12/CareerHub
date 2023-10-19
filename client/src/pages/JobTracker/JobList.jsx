@@ -6,7 +6,7 @@ import { IoMdAddCircle } from "react-icons/io";
 
 import JobCard from "../../components/JobTracker/JobCard";
 
-const JobTracker = () => {
+const JobList = () => {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -21,6 +21,7 @@ const JobTracker = () => {
     "Rejected",
   ];
 
+  // Get all jobs
   useEffect(() => {
     const getAllJobs = async () => {
       setIsLoading(true);
@@ -37,12 +38,23 @@ const JobTracker = () => {
     getAllJobs();
   }, []);
 
+  // filter jobs based on status
   const jobFilter = searchParams.get("status") || "All";
-
   const displayedJobs =
     jobFilter !== "All" && jobFilter
       ? jobs.filter((job) => job.status === jobFilter)
       : jobs;
+
+  //Handle Job Status Change
+  const jobStatusChange = (jobId, newStatus) => {
+    const updatedJobs = jobs.map((job) => {
+      if (job._id === jobId) {
+        return { ...job, status: newStatus };
+      }
+      return job;
+    });
+    setJobs(updatedJobs);
+  };
 
   if (error) {
     return <div>Something went wrong</div>;
@@ -77,7 +89,13 @@ const JobTracker = () => {
           {isLoading ? (
             <div>Loading...</div>
           ) : displayedJobs.length > 0 ? (
-            displayedJobs.map((job) => <JobCard key={job._id} job={job} />)
+            displayedJobs.map((job) => (
+              <JobCard
+                key={job._id}
+                job={job}
+                jobStatusChange={jobStatusChange}
+              />
+            ))
           ) : (
             <div className="text-center text-xl font-semibold mt-20 ">
               No Jobs Saved
@@ -89,4 +107,4 @@ const JobTracker = () => {
   );
 };
 
-export default JobTracker;
+export default JobList;

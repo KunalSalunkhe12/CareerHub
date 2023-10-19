@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { updateJobStatus } from "../../api";
 import toast from "react-hot-toast";
 
-const JobList = ({ job }) => {
+const JobList = ({ job, jobStatusChange }) => {
   const [status, setStatus] = useState(job.status);
 
   const date = new Date(job.createdAt);
@@ -17,10 +17,12 @@ const JobList = ({ job }) => {
     const newStatus = e.target.value;
     try {
       const { data } = await updateJobStatus(job._id, newStatus);
+      jobStatusChange(job._id, newStatus);
       setStatus(data.job.status);
       toast.success(data.message);
     } catch (error) {
-      toast.error(error.response.data.message);
+      console.log(error);
+      toast.error("Could not update status");
     }
   };
 
