@@ -1,15 +1,25 @@
 import { useEffect, useState } from "react";
-import { IoMdAddCircle } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { getJobs } from "../../api/index";
 
+import { IoMdAddCircle } from "react-icons/io";
+
 import JobCard from "../../components/JobTracker/JobCard";
-import JobFilters from "../../components/JobTracker/JobFilters";
 
 const JobTracker = () => {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const jobStatus = [
+    "All",
+    "Bookmarked",
+    "Applied",
+    "Interview",
+    "Offer",
+    "Rejected",
+  ];
 
   useEffect(() => {
     const getAllJobs = async () => {
@@ -27,6 +37,13 @@ const JobTracker = () => {
     getAllJobs();
   }, []);
 
+  const jobFilter = searchParams.get("status") || "All";
+
+  const displayedJobs =
+    jobFilter !== "All" && jobFilter
+      ? jobs.filter((job) => job.status === jobFilter)
+      : jobs;
+
   if (error) {
     return <div>Something went wrong</div>;
   }
@@ -43,14 +60,30 @@ const JobTracker = () => {
         </Link>
       </div>
       <div className="mt-5 w-2/3 mx-auto">
-        <JobFilters />
-        {isLoading ? (
-          <div>Loading...</div>
-        ) : jobs.length > 0 ? (
-          jobs.map((job) => <JobCard key={job._id} job={job} />)
-        ) : (
-          <div>No Jobs</div>
-        )}
+        <div className="flex gap-2">
+          {jobStatus.map((status) => (
+            <button
+              key={status}
+              onClick={() => setSearchParams({ status: status })}
+              className={
+                jobFilter === status ? "btn_primary" : "btn_primary_outline"
+              }
+            >
+              {status}
+            </button>
+          ))}
+        </div>
+        <div>
+          {isLoading ? (
+            <div>Loading...</div>
+          ) : displayedJobs.length > 0 ? (
+            displayedJobs.map((job) => <JobCard key={job._id} job={job} />)
+          ) : (
+            <div className="text-center text-xl font-semibold mt-20 ">
+              No Jobs Saved
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
