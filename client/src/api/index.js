@@ -11,3 +11,4 @@ export const newJob = (jobData) => axios.post(`${url}/job/new-job`, jobData);
 export const updateJobStatus = (id, jobStatus) => axios.put(`${url}/job/job-status/${id}`, { status: jobStatus });
 
 export const getGuidance = (status) => axios.get(`${url}/guidance/${status}`);
+export const updateGuidance = (status, taskId, isCompleted) => axios.put(`${url}/guidance`, { status, taskId, isCompleted });

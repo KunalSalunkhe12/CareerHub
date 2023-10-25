@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
-import { getGuidance } from "../../api/index";
+import { getGuidance, updateGuidance } from "../../api/index";
 
 import { AiOutlineBulb } from "react-icons/ai";
+import { toast } from "react-hot-toast";
 
 const Guidance = () => {
   const [guidance, setGuidance] = useState();
@@ -24,8 +25,29 @@ const Guidance = () => {
     getGuidanceList();
   }, [status]);
 
-  console.log(guidance);
+  const handleInputChange = async (taskId) => {
+    const updatedGuidance = guidance.map((task) => {
+      if (task.uuid === taskId) {
+        task.isCompleted = !task.isCompleted;
+      }
+      return task;
+    });
+    setGuidance(updatedGuidance);
 
+    const isCompleted = updatedGuidance.find(
+      (task) => task.uuid === taskId
+    ).isCompleted;
+
+    try {
+      await updateGuidance(status, taskId, isCompleted);
+      toast.success("Guidance updated");
+    } catch (error) {
+      console.log(error);
+      toast.error("Error updating guidance");
+    }
+  };
+
+  console.log(guidance);
   return (
     <div className="p-4 shadow-md border-2 border-gray-200 rounded-md w-1/2 ">
       <div className="flex gap-2 items-center text-lg font-semibold">
@@ -40,7 +62,12 @@ const Guidance = () => {
             return (
               <div key={task._id}>
                 <div className="flex items-center gap-2 font-medium mb-2">
-                  <input type="checkbox" checked={task.isCompleted} />
+                  <input
+                    className="cursor-pointer"
+                    type="checkbox"
+                    checked={task.isCompleted}
+                    onChange={() => handleInputChange(task.uuid)}
+                  />
                   <label htmlFor="">{task.title}</label>
                 </div>
                 <ul className="list-disc px-6">
