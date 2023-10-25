@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 
 import userRouter from "./routes/user.js";
 import jobRouter from "./routes/job.js";
+import guidanceRouter from "./routes/guidance.js";
 
 const app = express();
 dotenv.config();
@@ -18,6 +19,7 @@ app.get("/", (req, res) => {
 
 app.use("/user", userRouter)
 app.use("/job", jobRouter)
+app.use("/guidance", guidanceRouter)
 
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,

@@ -1,0 +1,137 @@
+[
+  {
+    "status": "Applying",
+    "tasks": [
+      {
+        "title": "Get Referral",
+        "isCompleted": false,
+        "subtasks": [
+          "Check if you know anyone at the company on LinkedIn",
+          "Ask a contact for an introduction to a person at the company",
+          "Best practices for informational interviewing",
+          "Request a referral"
+        ]
+      },
+      {
+        "title": "Customize Resume",
+        "isCompleted": false,
+        "subtasks": [
+          "Review job post keywords to include in your application",
+          "Include job post title in your resume",
+          "Tailor your resume blurb or summary to the job post",
+          "Tailor your achievements to the job post",
+          "Include skills that are referenced in the job post",
+          "Save your resume using 'first_last.file'"
+        ]
+      }
+    ]
+  },
+  {
+    "status": "Bookmarked",
+    "tasks": [
+      {
+        "title": "Review the Job Position details",
+        "isCompleted": false,
+        "subtasks": [
+          "Look through the highlighted skills and keywords to see if the job matches your experience",
+          "Research the company and its values to look for alignment with your career goals",
+          "Research the company's Glassdoor reviews to see if it's a good fit for you",
+          "Research the company's LinkedIn page to see if it's a good fit for you"
+        ]
+      }
+    ]
+  },
+  {
+    "status": "Applied",
+    "tasks": [
+      {
+        "title": "Follow up on Job Applications",
+        "isCompleted": false,
+        "subtasks": [
+          "Follow up on your application after 1 week",
+          "Follow up on your application after 2 weeks",
+          "Follow up on your application after 3 weeks",
+          "Archive job on job tracker if you haven't heard back after 3 weeks"
+        ]
+      }
+    ]
+  },
+  {
+    "status": "Interviewing",
+    "tasks": [
+      {
+        "title": "Research & Prepare",
+        "isCompleted": false,
+        "subtasks": [
+          "Research the Company via Google News",
+          "Research your Interviewers via LinkedIn",
+          "Review the Job Description"
+        ]
+      },
+      {
+        "title": "Practice Interviewing",
+        "isCompleted": false,
+        "subtasks": [
+          "Practice a “tell me about yourself” response",
+          "Understand your Work Style",
+          "Review Behavioral Interview Questions",
+          "Practice your CAR / STAR stories",
+          "Prepare questions for your Interviewer"
+        ]
+      },
+      {
+        "title": "Test your Tech",
+        "isCompleted": false,
+        "subtasks": [
+          "Download and test out the video platform in advance",
+          "Eliminate potential distractions and find a quiet place",
+          "Check your internet connection",
+          "Set up your background and camera angle"
+        ]
+      },
+      {
+        "title": "Follow up",
+        "isCompleted": false,
+        "subtasks": [
+          "Send a Thank You Email to anyone you met with",
+          "Record your Interview & Follow Up dates"
+        ]
+      }
+    ]
+  },
+  {
+    "status": "Negotiating",
+    "tasks": [
+      {
+        "title": "Research your Targets",
+        "isCompleted": false,
+        "subtasks": [
+          "Calculate your Budget",
+          "Determine your Market Value",
+          "Get market data from people and other resources",
+          "Determine your Target Salary Range"
+        ]
+      },
+      {
+        "title": "Prepare for Negotiations",
+        "isCompleted": false,
+        "subtasks": [
+          "Review your accomplishments and unique skills",
+          "Focus in on what the employer needs",
+          "Practice talking about your value",
+          "Prepare your negotiation scripts"
+        ]
+      },
+      {
+        "title": "Evaluate an Offer",
+        "isCompleted": false,
+        "subtasks": [
+          "Take time to think over the full offer and total compensation before accepting a role.",
+          "Consider making a counter offer",
+          "Analyze your offer",
+          "Accept or Decline the offer"
+        ]
+      }
+    ]
+  }
+]
