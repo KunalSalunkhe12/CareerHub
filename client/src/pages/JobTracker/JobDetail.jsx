@@ -44,7 +44,7 @@ const JobDetail = () => {
                 {job.description}
               </pre>
             </div>
-            <Outlet />
+            <Outlet context={job.status} />
           </div>
         </div>
       ) : (

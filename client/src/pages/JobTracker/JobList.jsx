@@ -48,15 +48,15 @@ const JobList = () => {
       : jobs;
 
   //Handle Job Status Change
-  const jobStatusChange = (jobId, newStatus) => {
-    const updatedJobs = jobs.map((job) => {
-      if (job._id === jobId) {
-        return { ...job, status: newStatus };
-      }
-      return job;
-    });
-    setJobs(updatedJobs);
-  };
+  // const jobStatusChange = (jobId, newStatus) => {
+  //   const updatedJobs = jobs.map((job) => {
+  //     if (job._id === jobId) {
+  //       return { ...job, status: newStatus };
+  //     }
+  //     return job;
+  //   });
+  //   setJobs(updatedJobs);
+  // };
 
   if (error) {
     return <div>Something went wrong</div>;
@@ -95,7 +95,7 @@ const JobList = () => {
               <JobCard
                 key={job._id}
                 job={job}
-                jobStatusChange={jobStatusChange}
+                // jobStatusChange={jobStatusChange}
               />
             ))
           ) : (
