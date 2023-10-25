@@ -55,14 +55,6 @@ const Header = () => {
             </li>
           </>
         )}
-        <li className="font-semibold hover:text-custom_orange cursor-pointer">
-          <NavLink
-            to="/about"
-            className={({ isActive }) => (isActive ? "text-custom_orange" : "")}
-          >
-            About Us
-          </NavLink>
-        </li>
       </ul>
       {user === null ? (
         <Link

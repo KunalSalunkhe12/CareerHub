@@ -9,6 +9,7 @@ import JobDetail from "./pages/JobTracker/JobDetail";
 import Guidance from "./components/JobTracker/Guidance";
 import Checklist from "./components/JobTracker/Checklist";
 import Templates from "./components/JobTracker/Templates";
+import Welcome from "./pages/Welcome";
 
 const router = createBrowserRouter([
   {
@@ -16,12 +17,16 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        path: "auth",
-        element: <Auth />,
+        index: true,
+        element: <Home />,
       },
       {
-        path: "home",
-        element: <Home />,
+        path: "welcome",
+        element: <Welcome />,
+      },
+      {
+        path: "auth",
+        element: <Auth />,
       },
       {
         path: "job-tracker",
