@@ -17,7 +17,7 @@ const JobList = ({ job, jobStatusChange }) => {
     const newStatus = e.target.value;
     try {
       const { data } = await updateJobStatus(job._id, newStatus);
-      jobStatusChange(job._id, newStatus);
+      jobStatusChange && jobStatusChange(job._id, newStatus);
       setStatus(data.job.status);
       toast.success(data.message);
     } catch (error) {
@@ -49,14 +49,20 @@ const JobList = ({ job, jobStatusChange }) => {
           <option className="" value="Bookmarked">
             Bookmarked
           </option>
+          <option className="" value="Applying">
+            Applying
+          </option>
           <option className="" value="Applied">
             Applied
           </option>
-          <option className="" value="Interview">
-            Interview
+          <option className="" value="Interviewing">
+            Interviewing
           </option>
-          <option className="" value="Offer">
-            Offer
+          <option className="" value="Negotiating">
+            Negotiating
+          </option>
+          <option className="" value="Accepted">
+            Accepted
           </option>
           <option className="" value="Rejected">
             Rejected

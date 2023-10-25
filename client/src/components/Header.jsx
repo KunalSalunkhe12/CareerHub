@@ -50,7 +50,7 @@ const Header = () => {
                   isActive ? "text-custom_orange" : ""
                 }
               >
-                Career Blogs
+                Community
               </NavLink>
             </li>
           </>

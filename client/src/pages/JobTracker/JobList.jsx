@@ -15,9 +15,11 @@ const JobList = () => {
   const jobStatus = [
     "All",
     "Bookmarked",
+    "Applying",
     "Applied",
-    "Interview",
-    "Offer",
+    "Interviewing",
+    "Negotiating",
+    "Accepted",
     "Rejected",
   ];
 
