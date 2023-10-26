@@ -10,6 +10,7 @@ const Guidance = () => {
   const [isLoading, setIsLoading] = useState(false);
   const status = useOutletContext();
 
+  // Fetch guidance list
   useEffect(() => {
     const getGuidanceList = async () => {
       try {
@@ -26,19 +27,19 @@ const Guidance = () => {
   }, [status]);
 
   const handleInputChange = async (taskId) => {
-    const updatedGuidance = guidance.map((task) => {
-      if (task.uuid === taskId) {
-        task.isCompleted = !task.isCompleted;
-      }
-      return task;
-    });
-    setGuidance(updatedGuidance);
-
-    const isCompleted = updatedGuidance.find(
-      (task) => task.uuid === taskId
-    ).isCompleted;
-
     try {
+      const updatedGuidance = guidance.map((task) => {
+        if (task.uuid === taskId) {
+          task.isCompleted = !task.isCompleted;
+        }
+        return task;
+      });
+      setGuidance(updatedGuidance);
+
+      const isCompleted = updatedGuidance.find(
+        (task) => task.uuid === taskId
+      ).isCompleted;
+
       await updateGuidance(status, taskId, isCompleted);
       toast.success("Guidance updated");
     } catch (error) {
@@ -47,7 +48,6 @@ const Guidance = () => {
     }
   };
 
-  console.log(guidance);
   return (
     <div className="p-4 shadow-md border-2 border-gray-200 rounded-md w-1/2 ">
       <div className="flex gap-2 items-center text-lg font-semibold">

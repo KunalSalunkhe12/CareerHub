@@ -16,11 +16,9 @@ export const getGuidance = async (req, res) => {
 export const updateGuidance = async (req, res) => {
     const { status, taskId, isCompleted } = req.body;
 
-    console.log(taskId)
     try {
         const guidance = await Guidance.findOne({ status });
 
-        // Find the task with the specified taskId in the tasks array
         guidance.tasks.map(task => {
             if (task.uuid === taskId) {
                 task.isCompleted = isCompleted;
