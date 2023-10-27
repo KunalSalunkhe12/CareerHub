@@ -1,9 +1,8 @@
 import { Carousel } from "flowbite-react";
 import { Link } from "react-router-dom"
 import pic_one from "../assets/images/29.jpg";
-import resume_pic from "../assets/images/resume_pic.png";
-import search_pic from "../assets/images/search_pic.png";
-import { useSelector } from "react-redux";
+import resume_pic from "../assets/images/resume_pic.png"
+import search_pic from "../assets/images/search_pic.png"
 const Home = () => {
   const user = useSelector((state) => state.auth.userInfo);
 

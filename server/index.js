@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import userRouter from "./routes/user.js";
 import jobRouter from "./routes/job.js";
 import guidanceRouter from "./routes/guidance.js";
+import checklistRouter from "./routes/checklist.js";
+import templateRouter from "./routes/template.js";
 
 import postRoutes from "./routes/post.js"
 
@@ -23,10 +25,12 @@ app.get("/", (req, res) => {
 app.use("/user", userRouter)
 app.use("/job", jobRouter)
 app.use("/guidance", guidanceRouter)
+app.use("/checklist", checklistRouter)
+app.use("/template", templateRouter)
 
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
     .then(() => app.listen(process.env.PORT || 5000, () => console.log("Server running on port 5000")))
-    .catch((err) => console.log(err+"Encountering error"));
+    .catch((err) => console.log(err + "Encountering error"));
