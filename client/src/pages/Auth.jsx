@@ -29,13 +29,13 @@ const Auth = () => {
         const { data } = await signup(formData);
         toast.success("Sign up successfully");
         dispatch(setCredentials(data));
-        navigate("/welcome");
+        navigate("/home");
       } else {
         const { data } = await signin(formData);
         console.log(data);
         toast.success("Sign in successfully");
         dispatch(setCredentials(data));
-        navigate("/welcome");
+        navigate("/home");
       }
     } catch (error) {
       console.log(error);
