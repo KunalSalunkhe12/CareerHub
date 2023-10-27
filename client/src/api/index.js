@@ -15,3 +15,5 @@ export const updateGuidance = (status, taskId, isCompleted) => axios.put(`${url}
 
 export const getChecklist = () => axios.get(`${url}/checklist`);
 export const updateChecklist = (status, taskId, isCompleted) => axios.put(`${url}/checklist`, { status, taskId, isCompleted });
+
+export const getTemplates = () => axios.get(`${url}/template`)
