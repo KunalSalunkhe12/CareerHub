@@ -7,6 +7,7 @@ import userRouter from "./routes/user.js";
 import jobRouter from "./routes/job.js";
 import guidanceRouter from "./routes/guidance.js";
 import checklistRouter from "./routes/checklist.js";
+import templateRouter from "./routes/template.js";
 
 const app = express();
 dotenv.config();
@@ -22,6 +23,7 @@ app.use("/user", userRouter)
 app.use("/job", jobRouter)
 app.use("/guidance", guidanceRouter)
 app.use("/checklist", checklistRouter)
+app.use("/template", templateRouter)
 
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,

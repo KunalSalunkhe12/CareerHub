@@ -10,6 +10,7 @@ import Guidance from "./components/JobTracker/Guidance";
 import Checklist from "./components/JobTracker/Checklist";
 import Templates from "./components/JobTracker/Templates";
 import Welcome from "./pages/Welcome";
+import TemplateInout from "./components/JobTracker/TemplateInout";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "auth",
         element: <Auth />,
+      },
+      {
+        path: "input",
+        element: <TemplateInout />,
       },
       {
         path: "job-tracker",
