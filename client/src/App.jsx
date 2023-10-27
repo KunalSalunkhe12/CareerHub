@@ -9,12 +9,8 @@ import JobDetail from "./pages/JobTracker/JobDetail";
 import Guidance from "./components/JobTracker/Guidance";
 import Checklist from "./components/JobTracker/Checklist";
 import Templates from "./components/JobTracker/Templates";
-<<<<<<< HEAD
 import Post from "./components/Community/Posts/PostsMain";
-=======
-import Welcome from "./pages/Welcome";
 import TemplateInout from "./components/JobTracker/TemplateInout";
->>>>>>> b750892f199881c2c168d885df8f09f2089d155a
 
 const router = createBrowserRouter([
   {
@@ -30,13 +26,12 @@ const router = createBrowserRouter([
         element: <Auth />,
       },
       {
-<<<<<<< HEAD
         path: "community",
         element: <Post />,
-=======
+      },
+      {
         path: "input",
         element: <TemplateInout />,
->>>>>>> b750892f199881c2c168d885df8f09f2089d155a
       },
       {
         path: "job-tracker",

@@ -1,15 +1,16 @@
-import React from "react";
-
 import Form from "../Form/Form";
 import Posts from "./Posts";
 
 const PostsMain = () => {
-  return  <>
+  return (
+    <>
       <div className="bg-gray-100">
         <header className="bg-white">
           <div className="container mx-auto py-4">
             <div className="flex justify-center items-center">
-              <h1 className="text-2xl font-semibold">Community Section Feel free to Join</h1>
+              <h1 className="text-2xl font-semibold">
+                Community Section Feel free to Join
+              </h1>
             </div>
           </div>
         </header>
@@ -25,7 +26,7 @@ const PostsMain = () => {
         </div>
       </div>
     </>
-}
-
+  );
+};
 
 export default PostsMain;
