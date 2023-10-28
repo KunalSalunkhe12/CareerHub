@@ -2,6 +2,7 @@
   "name": "careerhub",
   "private": true,
   "version": "0.0.0",
+  "proxy": "http://localhost:5000",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,12 +13,14 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.5.0",
+    "core-js": "^3.33.1",
     "flowbite": "^1.8.1",
     "flowbite-react": "^0.6.4",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-file-base64": "^1.0.3",
     "react-hook-form": "^7.46.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",

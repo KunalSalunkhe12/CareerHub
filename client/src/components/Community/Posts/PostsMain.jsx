@@ -1,7 +1,31 @@
 import Form from "../Form/Form";
 import Posts from "./Posts";
+import { useEffect } from "react";
 
+import { fetchAll } from "../../../redux/features/communitySlice";
+import { fetchPosts } from "../../../api";
+
+import { useDispatch } from "react-redux";
 const PostsMain = () => {
+  let dispatch = useDispatch();
+
+  let getPosts = async () => {
+
+    try {
+      const { data } = await fetchPosts();
+      console.log(data);
+      dispatch(fetchAll(data));
+
+    } catch (error) {
+      console.log("rerro in fetching", error);
+    }
+   
+  };
+
+  useEffect(() => {
+    getPosts();
+  }, []);
+
   return (
     <>
       <div className="bg-gray-100">

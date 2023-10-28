@@ -1,17 +1,13 @@
 import React from "react";
-// import resume_png from "../../../../assets/images/resume_pic.png";
+import resume_png from "../../../../assets/images/resume_pic.png";
 
 const PostCard = ({ post, setCurrentId, dispatch }) => {
   return (
     <div className="border rounded-md shadow-md mt-3">
-      {/* <img
+      <img
         src={resume_png}
-        // alt={post.title}
         className="w-full h-20 object-cover"
-      /> */}
-      <div className="absolute top-0 right-0">
-        <button className="text-white">right</button>
-      </div>
+      />
       <div className="p-2">
         <p className="text-sm text-gray-500">hie</p>
       </div>

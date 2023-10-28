@@ -1,19 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
 
 export const communitySlice = createSlice({
-    name: "posts",
-    initialState: {
-        posts:[]
+  name: "posts",
+  initialState: {
+    posts: [],
+  },
+  reducers: {
+    fetchAll: (state, action) => {
+      state.posts = action.payload;
     },
-    reducers: {
-       fetchAll: (state)=>{
-          
-       },
-       createPost: (state)=>{
+    createPosts: (state, action) => {
+      state.posts.push(action.payload); 
+    },
+  },
+});
 
-       }
-    }
-})
-
-export const { fetchAll, createPost } = communitySlice.actions
-export default communitySlice.reducer
+export const { fetchAll, createPosts } = communitySlice.actions;
+export default communitySlice.reducer;
