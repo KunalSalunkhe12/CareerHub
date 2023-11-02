@@ -30,9 +30,9 @@ const Header = () => {
       <ul className="flex items-center gap-7 ml-6 text-white">
         {user && (
           <>
-            <li className="font-semibold hover:text-custom_orange cursor-pointer">
+            {/* <li className="font-semibold hover:text-custom_orange cursor-pointer">
               <NavLink>Ai Resume Builder</NavLink>
-            </li>
+            </li> */}
             <li className="font-semibold hover:text-custom_orange cursor-pointer">
               <NavLink
                 to="/job-tracker"
