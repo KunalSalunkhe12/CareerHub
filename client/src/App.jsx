@@ -8,7 +8,6 @@ import AddJob from "./pages/JobTracker/AddJob";
 import JobDetail from "./pages/JobTracker/JobDetail";
 import Guidance from "./components/JobTracker/Guidance";
 import Checklist from "./components/JobTracker/Checklist";
-import Templates from "./components/JobTracker/Templates";
 import Post from "./components/Community/Posts/PostsMain";
 import TemplateInout from "./components/JobTracker/TemplateInout";
 
@@ -55,11 +54,8 @@ const router = createBrowserRouter([
               {
                 path: "checklist",
                 element: <Checklist />,
-              },
-              {
-                path: "templates",
-                element: <Templates />,
-              },
+              }
+              
             ],
           },
         ],

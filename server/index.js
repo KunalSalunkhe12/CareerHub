@@ -6,33 +6,25 @@ import userRouter from "./routes/user.js";
 import jobRouter from "./routes/job.js";
 import guidanceRouter from "./routes/guidance.js";
 import checklistRouter from "./routes/checklist.js";
-import templateRouter from "./routes/template.js";
 
-import postRoutes from "./routes/post.js"
+import postRoutes from "./routes/posts.js"
 
 const app = express();
 dotenv.config();
 
 
-
-
+app.use(cors());
 app.use(express.json({ limit: "30mb" }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors());
-
-app.use("/posts",postRoutes) 
 app.get("/", (req, res) => {
     res.send("Hello to CareerHub API");
 });
-
-
-
+app.use("/posts",postRoutes)
 
 app.use("/user", userRouter)
 app.use("/job", jobRouter)
 app.use("/guidance", guidanceRouter)
 app.use("/checklist", checklistRouter)
-app.use("/template", templateRouter)
 
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,

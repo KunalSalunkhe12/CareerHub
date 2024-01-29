@@ -13,7 +13,7 @@ const PostsMain = () => {
 
     try {
       const { data } = await fetchPosts();
-      console.log(data);
+      // console.log(data);
       dispatch(fetchAll(data));
 
     } catch (error) {
