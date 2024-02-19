@@ -54,8 +54,7 @@ const router = createBrowserRouter([
               {
                 path: "checklist",
                 element: <Checklist />,
-              }
-              
+              },
             ],
           },
         ],
