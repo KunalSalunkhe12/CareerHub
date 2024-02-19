@@ -1,38 +1,32 @@
-import Guidance from "../models/guidance.js";
+import Job from "../models/job.js";
 
 export const getGuidance = async (req, res) => {
-    const { status } = req.params;
-    try {
-        const guidance = await Guidance.find({ status });
-        res.status(200).json(guidance);
-
-    }
-    catch (error) {
-        console.log(error);
-        res.status(404).json({ message: error.message });
-    }
-}
+  const { status } = req.params;
+  try {
+    const guidance = await Guidance.find({ status });
+    res.status(200).json(guidance);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({ message: error.message });
+  }
+};
 
 export const updateGuidance = async (req, res) => {
-    const { status, taskId, isCompleted } = req.body;
+  const { jobId } = req.params;
+  const { guidanceData } = req.body;
 
-    try {
-        const guidance = await Guidance.findOne({ status });
+  console.log(jobId, guidanceData);
 
-        guidance.tasks.map(task => {
-            if (task.uuid === taskId) {
-                task.isCompleted = isCompleted;
-            }
-            return task;
-        });
+  try {
+    const job = await Job.findOne({ _id: jobId });
 
-        await guidance.save();
+    job.guidance[guidanceData.status.toUpperCase()] = guidanceData;
 
-        res.status(200).json(guidance);
+    await job.save();
 
-    }
-    catch (error) {
-        console.log(error);
-        res.status(404).json({ message: error.message });
-    }
-}
+    res.status(200).json(job);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({ message: error.message });
+  }
+};

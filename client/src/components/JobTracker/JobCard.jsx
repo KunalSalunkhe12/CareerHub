@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { updateJobStatus } from "../../api";
+import { deleteJob, updateJobStatus } from "../../api";
 import toast from "react-hot-toast";
 
 const JobList = ({ job }) => {
@@ -16,6 +16,18 @@ const JobList = ({ job }) => {
   const handleStatusChange = async (e) => {
     const newStatus = e.target.value;
     try {
+      if (newStatus === "Delete") {
+        const confirmDelete = window.confirm(
+          "Are you sure you want to delete this job?"
+        );
+        if (confirmDelete) {
+          await deleteJob(job._id);
+          toast.success("Job deleted successfully");
+          window.location.reload();
+        }
+        return;
+      }
+
       const { data } = await updateJobStatus(job._id, newStatus);
       // jobStatusChange && jobStatusChange(job._id, newStatus);
       setStatus(data.job.status);
@@ -67,6 +79,9 @@ const JobList = ({ job }) => {
           </option>
           <option className="" value="Rejected">
             Rejected
+          </option>
+          <option className="" value="Delete">
+            Delete
           </option>
         </select>
       </div>

@@ -10,10 +10,11 @@ const AddJob = () => {
     formState: { errors, isSubmitting },
   } = useForm();
   const navigate = useNavigate();
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
   const onSubmit = async (formData) => {
     try {
-      const { data } = await newJob(formData);
+      const { data } = await newJob(formData, userInfo.result._id);
       if (data) {
         toast.success("Job added successfully");
         navigate("/job-tracker");

@@ -11,6 +11,7 @@ const JobList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
   const jobStatus = [
     "All",
@@ -28,7 +29,7 @@ const JobList = () => {
     const getAllJobs = async () => {
       setIsLoading(true);
       try {
-        const { data } = await getJobs();
+        const { data } = await getJobs(userInfo.result._id);
         setJobs(data);
       } catch (error) {
         console.log(error);

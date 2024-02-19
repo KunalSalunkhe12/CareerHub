@@ -1,51 +1,34 @@
-import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
-import { getGuidance, updateGuidance } from "../../api/index";
-
+import { useState } from "react";
 import { AiOutlineBulb } from "react-icons/ai";
-import { toast } from "react-hot-toast";
+import { updateGuidance } from "../../api";
 
 const Guidance = () => {
-  const [guidance, setGuidance] = useState();
-  const [isLoading, setIsLoading] = useState(false);
-  const status = useOutletContext();
+  const job = useOutletContext();
 
-  // Fetch guidance list
-  useEffect(() => {
-    const getGuidanceList = async () => {
-      try {
-        setIsLoading(true);
-        const { data } = await getGuidance(status);
-        setGuidance(data[0].tasks);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    getGuidanceList();
-  }, [status]);
+  const guidanceData = Object.values(job.guidance).filter(
+    (guidance) => guidance.status === job.status
+  )[0];
+
+  const [guidance, setGuidance] = useState(guidanceData);
 
   const handleInputChange = async (taskId) => {
-    try {
-      const updatedGuidance = guidance.map((task) => {
-        if (task.uuid === taskId) {
-          task.isCompleted = !task.isCompleted;
-        }
-        return task;
-      });
-      setGuidance(updatedGuidance);
+    const updateGuidanceData = { ...guidance };
+    const updateTasks = updateGuidanceData.tasks.map((task) => {
+      if (task.uuid === taskId) {
+        task.isCompleted = !task.isCompleted;
+      }
+      return task;
+    });
+    updateGuidanceData.tasks = updateTasks;
 
-      const isCompleted = updatedGuidance.find(
-        (task) => task.uuid === taskId
-      ).isCompleted;
+    const newUpdatedGuidance = await updateGuidance(
+      job._id,
+      updateGuidanceData
+    );
+    console.log(newUpdatedGuidance);
 
-      await updateGuidance(status, taskId, isCompleted);
-      toast.success("Guidance updated");
-    } catch (error) {
-      console.log(error);
-      toast.error("Error updating guidance");
-    }
+    setGuidance(updateGuidanceData);
   };
 
   return (
@@ -55,10 +38,8 @@ const Guidance = () => {
         <h3>Guidance</h3>
       </div>
       <div className="flex flex-col gap-5 mt-4">
-        {isLoading ? (
-          <div>Loading...</div>
-        ) : guidance ? (
-          guidance.map((task) => {
+        {guidance &&
+          guidance.tasks.map((task) => {
             return (
               <div key={task._id}>
                 <div className="flex items-center gap-2 font-medium mb-2">
@@ -77,10 +58,7 @@ const Guidance = () => {
                 </ul>
               </div>
             );
-          })
-        ) : (
-          <div className="font-semibold text-lg">No guidance available</div>
-        )}
+          })}
       </div>
     </div>
   );
