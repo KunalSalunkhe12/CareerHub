@@ -2,6 +2,7 @@ import { useOutletContext } from "react-router-dom";
 import { useState } from "react";
 import { AiOutlineBulb } from "react-icons/ai";
 import { updateGuidance } from "../../api";
+import toast from "react-hot-toast";
 
 const Guidance = () => {
   const job = useOutletContext();
@@ -12,23 +13,20 @@ const Guidance = () => {
 
   const [guidance, setGuidance] = useState(guidanceData);
 
-  const handleInputChange = async (taskId) => {
-    const updateGuidanceData = { ...guidance };
-    const updateTasks = updateGuidanceData.tasks.map((task) => {
-      if (task.uuid === taskId) {
-        task.isCompleted = !task.isCompleted;
-      }
-      return task;
-    });
-    updateGuidanceData.tasks = updateTasks;
+  const handleInputChange = async (taskId, isCompleted) => {
+    try {
+      const { data } = await updateGuidance(
+        job._id,
+        job.status,
+        taskId,
+        !isCompleted
+      );
 
-    const newUpdatedGuidance = await updateGuidance(
-      job._id,
-      updateGuidanceData
-    );
-    console.log(newUpdatedGuidance);
-
-    setGuidance(updateGuidanceData);
+      setGuidance(data);
+      toast.success("Task updated successfully");
+    } catch (error) {
+      toast.error("Task not updated");
+    }
   };
 
   return (
@@ -47,7 +45,9 @@ const Guidance = () => {
                     className="cursor-pointer"
                     type="checkbox"
                     checked={task.isCompleted}
-                    onChange={() => handleInputChange(task.uuid)}
+                    onChange={() =>
+                      handleInputChange(task.uuid, task.isCompleted)
+                    }
                   />
                   <label htmlFor="">{task.title}</label>
                 </div>

@@ -1,131 +1,149 @@
 export const checklist = {
-  BOOKMARKED: [
-    {
-      uuid: "1",
-      task: "Check if the job description aligns with your interests and values",
-      is_completed: false,
-    },
-    {
-      uuid: "2",
-      task: "Review the highlighted skills to see if the role is a good fit",
-      is_completed: false,
-    },
-    {
-      uuid: "3",
-      task: "Research the company or role and mark your excitement level",
-      is_completed: false,
-    },
-  ],
-  APPLYING: [
-    {
-      uuid: "4",
-      task: "Find and research someone who works at the company and add as a contact",
-      is_completed: false,
-    },
-    {
-      uuid: "5",
-      task: "Set up an informational interview to learn more about the role/company",
-      is_completed: false,
-    },
-    {
-      uuid: "6",
-      task: "Identify potential referrals to help get your application on the top of the pile",
-      is_completed: false,
-    },
-    {
-      uuid: "7",
-      task: "Customize your work achievements using the job description keywords",
-      is_completed: false,
-    },
-    {
-      uuid: "8",
-      task: "Submit your application on the company website if possible",
-      is_completed: false,
-    },
-  ],
-  APPLIED: [
-    {
-      uuid: "9",
-      task: "Reach out to the hiring manager or recruiter",
-      is_completed: false,
-    },
-    {
-      uuid: "10",
-      task: "Follow up on your application via email weekly",
-      is_completed: false,
-    },
-    {
-      uuid: "11",
-      task: "Continue identifying and saving similar job opportunities",
-      is_completed: false,
-    },
-    {
-      uuid: "12",
-      task: "Set up weekly networking calls to explore similar companies/roles",
-      is_completed: false,
-    },
-  ],
-  INTERVIEWING: [
-    {
-      uuid: "13",
-      task: "Prepare your blurb or 'tell me about yourself' response",
-      is_completed: false,
-    },
-    {
-      uuid: "14",
-      task: "Practice answering behavioral interview questions",
-      is_completed: false,
-    },
-    {
-      uuid: "15",
-      task: "Research the company and your interviewers",
-      is_completed: false,
-    },
-    {
-      uuid: "16",
-      task: "Set up your virtual interview space and test your tech",
-      is_completed: false,
-    },
-    {
-      uuid: "17",
-      task: "Send thank you emails within 24 hours",
-      is_completed: false,
-    },
-  ],
-  NEGOTIATING: [
-    {
-      uuid: "18",
-      task: "Research your market value and know your numbers",
-      is_completed: false,
-    },
-    {
-      uuid: "19",
-      task: "Prepare your negotiation scripts",
-      is_completed: false,
-    },
-    {
-      uuid: "20",
-      task: "Evaluate your offer and decline or accept",
-      is_completed: false,
-    },
-  ],
-  ACCEPTED: [
-    {
-      uuid: "21",
-      task: "Plan your resignation if applicable",
-      is_completed: false,
-    },
-    {
-      uuid: "22",
-      task: "Take some time to relax and recharge",
-      is_completed: false,
-    },
-    {
-      uuid: "23",
-      task: "Prepare for your first day of onboarding",
-      is_completed: false,
-    },
-  ],
+  BOOKMARKED: {
+    status: "Bookmarked",
+    tasks: [
+      {
+        uuid: "1",
+        task: "Check if the job description aligns with your interests and values",
+        is_completed: false,
+      },
+      {
+        uuid: "2",
+        task: "Review the highlighted skills to see if the role is a good fit",
+        is_completed: false,
+      },
+      {
+        uuid: "3",
+        task: "Research the company or role and mark your excitement level",
+        is_completed: false,
+      },
+    ],
+  },
+  APPLYING: {
+    status: "Applying",
+    tasks: [
+      {
+        uuid: "4",
+        task: "Find and research someone who works at the company and add as a contact",
+        is_completed: false,
+      },
+      {
+        uuid: "5",
+        task: "Set up an informational interview to learn more about the role/company",
+        is_completed: false,
+      },
+      {
+        uuid: "6",
+        task: "Identify potential referrals to help get your application on the top of the pile",
+        is_completed: false,
+      },
+      {
+        uuid: "7",
+        task: "Customize your work achievements using the job description keywords",
+        is_completed: false,
+      },
+      {
+        uuid: "8",
+        task: "Submit your application on the company website if possible",
+        is_completed: false,
+      },
+    ],
+  },
+  APPLIED: {
+    status: "Applied",
+    tasks: [
+      {
+        uuid: "9",
+        task: "Reach out to the hiring manager or recruiter",
+        is_completed: false,
+      },
+      {
+        uuid: "10",
+        task: "Follow up on your application via email weekly",
+        is_completed: false,
+      },
+      {
+        uuid: "11",
+        task: "Continue identifying and saving similar job opportunities",
+        is_completed: false,
+      },
+      {
+        uuid: "12",
+        task: "Set up weekly networking calls to explore similar companies/roles",
+        is_completed: false,
+      },
+    ],
+  },
+  INTERVIEWING: {
+    status: "Interviewing",
+    tasks: [
+      {
+        uuid: "13",
+        task: "Prepare your blurb or 'tell me about yourself' response",
+        is_completed: false,
+      },
+      {
+        uuid: "14",
+        task: "Practice answering behavioral interview questions",
+        is_completed: false,
+      },
+      {
+        uuid: "15",
+        task: "Research the company and your interviewers",
+        is_completed: false,
+      },
+      {
+        uuid: "16",
+        task: "Set up your virtual interview space and test your tech",
+        is_completed: false,
+      },
+      {
+        uuid: "17",
+        task: "Send thank you emails within 24 hours",
+        is_completed: false,
+      },
+    ],
+  },
+  NEGOTIATING: {
+    status: "Negotiating",
+    tasks: [
+      {
+        uuid: "18",
+        task: "Research your market value and know your numbers",
+        is_completed: false,
+      },
+      {
+        uuid: "19",
+        task: "Prepare your negotiation scripts",
+        is_completed: false,
+      },
+      {
+        uuid: "20",
+        task: "Evaluate your offer and decline or accept",
+        is_completed: false,
+      },
+    ],
+  },
+  ACCEPTED: {
+    status: "Accepted",
+    tasks: [
+      {
+        uuid: "21",
+        task: "Plan your resignation if applicable",
+        is_completed: false,
+      },
+      {
+        uuid: "22",
+        task: "Take some time to relax and recharge",
+        is_completed: false,
+      },
+      {
+        uuid: "23",
+        task: "Prepare for your first day of onboarding",
+        is_completed: false,
+      },
+    ],
+  },
 };
 
 export const guidance = {

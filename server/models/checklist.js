@@ -16,12 +16,30 @@ const taskSchema = new mongoose.Schema({
 });
 
 const checklistSchema = new mongoose.Schema({
-  BOOKMARKED: [taskSchema],
-  APPLYING: [taskSchema],
-  APPLIED: [taskSchema],
-  INTERVIEWING: [taskSchema],
-  NEGOTIATING: [taskSchema],
-  ACCEPTED: [taskSchema],
+  BOOKMARKED: {
+    status: "string",
+    tasks: [taskSchema],
+  },
+  APPLYING: {
+    status: "string",
+    tasks: [taskSchema],
+  },
+  APPLIED: {
+    status: "string",
+    tasks: [taskSchema],
+  },
+  INTERVIEWING: {
+    status: "string",
+    tasks: [taskSchema],
+  },
+  NEGOTIATING: {
+    status: "string",
+    tasks: [taskSchema],
+  },
+  ACCEPTED: {
+    status: "string",
+    tasks: [taskSchema],
+  },
 });
 
 export { checklistSchema, taskSchema };

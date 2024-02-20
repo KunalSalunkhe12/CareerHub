@@ -24,13 +24,11 @@ export const updateJobStatus = (id, jobStatus) =>
   axios.put(`${url}/job/job-status/${id}`, { status: jobStatus });
 export const deleteJob = (id) => axios.delete(`${url}/job/${id}`);
 
-export const getGuidance = (status) => axios.get(`${url}/guidance/${status}`);
-export const updateGuidance = (jobId, guidanceData) =>
-  axios.put(`${url}/guidance/${jobId}`, { guidanceData });
+export const updateGuidance = (jobId, status, taskId, isCompleted) =>
+  axios.put(`${url}/guidance/${jobId}`, { status, taskId, isCompleted });
 
-export const getChecklist = () => axios.get(`${url}/checklist`);
-export const updateChecklist = (status, taskId, isCompleted) =>
-  axios.put(`${url}/checklist`, { status, taskId, isCompleted });
+export const updateChecklist = (jobId, status, taskId, isCompleted) =>
+  axios.put(`${url}/checklist/${jobId}`, { status, taskId, isCompleted });
 
 export const fetchPosts = () => axios.get(`${url}/posts`);
 

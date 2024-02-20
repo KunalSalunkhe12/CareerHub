@@ -1,9 +1,8 @@
-import express from 'express';
-import { getChecklist, updateChecklist } from '../controllers/checklist.js';
+import express from "express";
+import { updateChecklist } from "../controllers/checklist.js";
 
 const router = express.Router();
 
-router.get("/", getChecklist);
-router.put("/", updateChecklist);
+router.put("/:jobId", updateChecklist);
 
 export default router;
