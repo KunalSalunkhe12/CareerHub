@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { deleteJob, updateJobStatus } from "../../api";
 import toast from "react-hot-toast";
 
 const JobList = ({ job }) => {
   const [status, setStatus] = useState(job.status);
+  const navigate = useNavigate();
 
   const date = new Date(job.createdAt);
   const formattedDate = date.toLocaleDateString("en-US", {
@@ -23,7 +24,7 @@ const JobList = ({ job }) => {
         if (confirmDelete) {
           await deleteJob(job._id);
           toast.success("Job deleted successfully");
-          window.location.reload();
+          navigate("/job-tracker");
         }
         return;
       }

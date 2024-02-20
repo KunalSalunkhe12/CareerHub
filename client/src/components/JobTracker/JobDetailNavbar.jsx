@@ -4,6 +4,7 @@ import {
   AiOutlineCheckSquare,
   AiOutlineMail,
 } from "react-icons/ai";
+import { LuWholeWord } from "react-icons/lu";
 
 const JobDetailNavbar = () => {
   return (
@@ -38,6 +39,16 @@ const JobDetailNavbar = () => {
         }
       >
         <AiOutlineMail />
+      </NavLink>
+      <NavLink
+        to="keywords"
+        className={({ isActive }) =>
+          isActive
+            ? "bg-custom_black rounded-full p-2 text-custom_orange"
+            : "p-2"
+        }
+      >
+        <LuWholeWord />
       </NavLink>
     </div>
   );

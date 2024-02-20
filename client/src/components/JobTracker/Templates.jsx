@@ -22,7 +22,6 @@ const Templates = () => {
     getTemplatesData();
   }, []);
 
-  console.log(templates);
   const handleCopyMessage = async (uuid) => {
     await navigator.clipboard.writeText(
       templates.find((template) => template.uuid === uuid).body
@@ -38,7 +37,7 @@ const Templates = () => {
   };
 
   return (
-    <div className="p-4 shadow-md border-2 border-gray-200 rounded-md w-1/2 bg-custom_green">
+    <div className="p-4 shadow-md border-2 border-gray-200 rounded-md w-1/2 ">
       <div className="flex gap-2 items-center text-lg font-semibold">
         <AiOutlineMail />
         <h3>Templates</h3>
@@ -51,7 +50,7 @@ const Templates = () => {
             return (
               <div
                 key={template.uuid}
-                className="bg-custom_white p-2 rounded-md"
+                className="bg-custom_white p-4 rounded-md border-2 border-gray-200 shadow-md"
               >
                 <p className="font-semibold my-4 text-wh">{template.subject}</p>
                 <p className="font-sans">{template.body}</p>
