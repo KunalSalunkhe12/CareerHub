@@ -1,7 +1,7 @@
 import PostMessage from "../models/postMessage.js";
 import sharp from "sharp";
 import { uploadFileInCloudinary } from "../utils/cloudinary.js";
-import fs from "fs"
+import fs from "fs";
 
 export const getPosts = async (req, res) => {
   try {
@@ -40,6 +40,18 @@ export const createPost = async (req, res) => {
     fs.unlinkSync(optimizedImagePath);
 
     res.status(200).json(newPost);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
+export const deletePost = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await PostMessage.findByIdAndDelete(id);
+
+    res.status(200).json({ message: "Post deleted successfully" });
   } catch (error) {
     res.status(409).json({ message: error.message });
   }

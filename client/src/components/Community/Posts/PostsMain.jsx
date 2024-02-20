@@ -10,16 +10,13 @@ const PostsMain = () => {
   let dispatch = useDispatch();
 
   let getPosts = async () => {
-
     try {
       const { data } = await fetchPosts();
-      // console.log(data);
+      console.log(data);
       dispatch(fetchAll(data));
-
     } catch (error) {
       console.log("rerro in fetching", error);
     }
-   
   };
 
   useEffect(() => {
