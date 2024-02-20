@@ -31,6 +31,7 @@ export const updateChecklist = (jobId, status, taskId, isCompleted) =>
   axios.put(`${url}/checklist/${jobId}`, { status, taskId, isCompleted });
 
 export const fetchPosts = () => axios.get(`${url}/posts`);
-
+export const deletePost = (id) => axios.delete(`${url}/posts/${id}`);
 export const createPost = (newPost) => axios.post(`${url}/posts`, newPost);
+
 export const getTemplates = () => axios.get(`${url}/template`);
