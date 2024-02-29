@@ -8,7 +8,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    const userInfo = JSON.parse(localStorage.getItem("Profile"));
     if (userInfo) {
       dispatch(setCredentials(userInfo));
     }

@@ -9,7 +9,7 @@ export const signup = async (req, res) => {
         if (existingUser) return res.status(400).json({ message: "User already exists" });
 
         const hashedPassword = await bcrypt.hash(password, 12);
-
+        console.log(process.env.JWT_SECRET)
         const result = await User.create({ email, password: hashedPassword, name });
         const token = jwt.sign({ email: result.email, id: result._id }, process.env.JWT_SECRET, { expiresIn: "3h" });
         res.status(200).json({ result, token });
@@ -28,7 +28,7 @@ export const signin = async (req, res) => {
 
         const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
         if (!isPasswordCorrect) return res.status(400).json({ message: "Invalid credentials" });
-
+        // console.log(process.env.JWT_SECRET)
         const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, process.env.JWT_SECRET, { expiresIn: "3h" });
         res.status(200).json({ result: existingUser, token });
     } catch (error) {

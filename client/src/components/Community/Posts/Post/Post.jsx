@@ -1,15 +1,19 @@
-import { deletePost } from "../../../../api";
+import { deletePost, likePost } from "../../../../api";
 import { useState } from "react";
 
 const PostCard = ({ post }) => {
-  const [likes, setLikes] = useState(post?.likeCount);
+  const [likes, setLikes] = useState(null);
 
-  const handleLike = () => {
-    if (likes === 1) {
-      setLikes(0);
-      return;
+  const handleLike = async () => {
+    try {
+      const { data } = await likePost(post._id);
+      console.log(data);
+      console.log("Like clicked before api call");
+      console.log(data.likes.length)
+      setLikes(data.likes.length)
+    } catch (error) {
+      console.log(error);
     }
-    setLikes(likes + 1);
   };
 
   const handleDelete = async () => {
@@ -34,7 +38,7 @@ const PostCard = ({ post }) => {
           <button className="text-blue-500" onClick={handleLike}>
             Like
           </button>
-          <p className="text-blue-500">{likes}</p>
+          <p className="text-blue-500">{likes === 0 ? ' ' : likes}</p>
         </div>
         <button className="text-blue-500" onClick={handleDelete}>
           Delete
