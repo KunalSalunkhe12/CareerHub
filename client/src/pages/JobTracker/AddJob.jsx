@@ -10,7 +10,7 @@ const AddJob = () => {
     formState: { errors, isSubmitting },
   } = useForm();
   const navigate = useNavigate();
-  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const userInfo = JSON.parse(localStorage.getItem("Profile"));
 
   const onSubmit = async (formData) => {
     try {
