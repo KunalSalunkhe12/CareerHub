@@ -25,6 +25,7 @@ const JobList = ({ job }) => {
           await deleteJob(job._id);
           toast.success("Job deleted successfully");
           navigate("/job-tracker");
+          window.location.reload();
         }
         return;
       }

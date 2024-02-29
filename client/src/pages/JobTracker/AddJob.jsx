@@ -1,12 +1,15 @@
 import { useNavigate, Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { newJob } from "../../api/index";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import toast from "react-hot-toast";
 
 const AddJob = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors, isSubmitting },
   } = useForm();
   const navigate = useNavigate();
@@ -14,6 +17,7 @@ const AddJob = () => {
 
   const onSubmit = async (formData) => {
     try {
+      console.log(formData);
       const { data } = await newJob(formData, userInfo.result._id);
       if (data) {
         toast.success("Job added successfully");
@@ -108,18 +112,17 @@ const AddJob = () => {
             <label className="font-medium" htmlFor="description">
               Job Description
             </label>
-            <textarea
-              rows="10"
-              className="block border border-grey-light w-full p-3 rounded mb-4"
-              type="text"
-              {...register("description", {
-                required: {
-                  value: true,
-                  message: "Please enter your name",
-                },
-              })}
-              id="description"
-              placeholder="Job Description"
+            <Controller
+              name="description"
+              control={control}
+              defaultValue=""
+              rules={{ required: "Content is required" }}
+              render={({ field }) => (
+                <ReactQuill
+                  value={field.value}
+                  onChange={(value) => field.onChange(value)}
+                />
+              )}
             />
             <p className="text-xs text-red-500">
               {errors.description?.message}

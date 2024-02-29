@@ -1,5 +1,6 @@
 import Job from "../models/job.js";
 import { checklist, guidance } from "../contants/index.js";
+import axios from "axios";
 
 export const getJob = async (req, res) => {
   const { id } = req.params;
@@ -30,11 +31,24 @@ export const getJobs = async (req, res) => {
 export const newJob = async (req, res) => {
   const { jobData, userId } = req.body;
   try {
+    console.log(jobData.description);
+    const { data } = await axios.post(
+      `${process.env.FLASK_API}/extract_keywords`,
+      {
+        doc: jobData.description,
+      }
+    );
+
+    const keywords = data.keywords.map((keyword) => keyword[0]);
+
+    console.log(data);
+
     const newJob = await Job.create({
       user: userId,
       ...jobData,
       checklist,
       guidance,
+      keywords,
     });
     res.status(201).json(newJob);
   } catch (error) {

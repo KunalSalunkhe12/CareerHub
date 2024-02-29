@@ -42,6 +42,10 @@ const jobSchema = new mongoose.Schema(
       type: guidanceSchema,
       required: true,
     },
+    keywords: {
+      type: [String],
+      required: true,
+    },
   },
   { timestamps: true }
 );
