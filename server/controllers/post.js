@@ -33,7 +33,8 @@ export const createPost = async (req, res) => {
       message,
       tags,
       selectedFile: cloudinaryResponse.secure_url,
-      creator: req.userId
+      creator,
+      user: req.userId,
     });
 
     await newPost.save();
@@ -77,5 +78,5 @@ export const likePost = async (req, res) => {
   const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {
     new: true,
   });
-  res.json(updatedPost)
+  res.json(updatedPost);
 };

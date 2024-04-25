@@ -37,7 +37,7 @@ const PostsMain = () => {
         </header>
         <div className="container mx-auto p-4">
           <div className="flex flex-wrap justify-between items-stretch space-x-4">
-            <div className="w-full sm:w-7/12">
+            <div className="w-full flex-1 sm:w-7/12">
               <Posts />
             </div>
             <div className="w-full sm:w-4/12">
