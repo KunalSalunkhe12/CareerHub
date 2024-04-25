@@ -14,6 +14,18 @@ export const getPosts = async (req, res) => {
   }
 };
 
+export const getPostDetails = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const post = await PostMessage.findById(id);
+
+    res.status(200).json(post);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 export const createPost = async (req, res) => {
   const { title, message, creator, tags } = req.body;
   console.log(title, message, creator);
@@ -75,6 +87,18 @@ export const likePost = async (req, res) => {
   } else {
     post.likes.splice(index, 1);
   }
+  const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {
+    new: true,
+  });
+  res.json(updatedPost);
+};
+
+export const commentPost = async (req, res) => {
+  const { id } = req.params;
+  const { creator, message } = req.body;
+
+  const post = await PostMessage.findById(id);
+  post.comments.push({ creator, message });
   const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {
     new: true,
   });

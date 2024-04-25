@@ -12,6 +12,7 @@ import Post from "./components/Community/Posts/PostsMain";
 import Templates from "./components/JobTracker/Templates";
 import Keywords from "./components/JobTracker/Keywords";
 import TemplateInout from "./components/JobTracker/TemplateInout";
+import PostDetail from "./components/Community/Posts/Post/PostDetail";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "community",
         element: <Post />,
+      },
+      {
+        path: "post/:postId",
+        element: <PostDetail />,
       },
       {
         path: "input",

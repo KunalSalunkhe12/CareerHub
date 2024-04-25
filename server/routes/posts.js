@@ -4,12 +4,16 @@ import {
   createPost,
   deletePost,
   likePost,
+  getPostDetails,
+  commentPost,
 } from "../controllers/post.js";
 import { upload } from "../middlewares/multer.js";
 import auth from "../middlewares/auth.js";
 const router = express.Router();
 
 router.get("/", getPosts);
+router.get("/:id", getPostDetails);
+router.post("/comment/:id", commentPost);
 router.post("/", upload.single("file"), auth, createPost);
 router.delete("/:id", auth, deletePost);
 

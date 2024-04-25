@@ -18,6 +18,16 @@ const postSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+  comments: [
+    {
+      creator: String,
+      message: String,
+      createdAt: {
+        type: Date,
+        default: new Date(),
+      },
+    },
+  ],
 });
 
 var PostMessage = mongoose.model("PostMessage", postSchema);

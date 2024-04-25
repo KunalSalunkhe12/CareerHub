@@ -1,8 +1,11 @@
 import { deletePost, likePost } from "../../../../api";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const PostCard = ({ post }) => {
   const [likes, setLikes] = useState(null);
+  const user = useSelector((state) => state.auth.userInfo);
 
   const handleLike = async () => {
     try {
@@ -72,23 +75,28 @@ const PostCard = ({ post }) => {
 
   return (
     <div className="border bg-white rounded-md shadow-md mt-3 p-4">
-      <div className="font-semibold">
-        <p className="">{post.creator}</p>
-      </div>
-      <p className="text-sm mb-2">{multiFormatDateString(post.createdAt)}</p>
-      <img src={post.selectedFile} className="w-full object-cover" />
-      <h5 className="text-2xl font-semibold my-4">{post.title}</h5>
-      <div dangerouslySetInnerHTML={{ __html: post.message }}></div>
-      <div className="flex justify-between mt-4">
-        <div className="flex gap-2">
-          <button className="text-blue-500" onClick={handleLike}>
-            Like
-          </button>
-          <p className="text-blue-500">{likes === 0 ? " " : likes}</p>
+      <Link to={`/post/${post._id}`}>
+        <div className="font-semibold">
+          <p className="">{post.creator}</p>
         </div>
-        <button className="text-blue-500" onClick={handleDelete}>
-          Delete
-        </button>
+        <p className="text-sm mb-2">{multiFormatDateString(post.createdAt)}</p>
+        <img src={post.selectedFile} className="w-full object-cover" />
+        <h5 className="text-2xl font-semibold my-4">{post.title}</h5>
+      </Link>
+      <div className="flex justify-between mt-4">
+        {user.result.name === post.creator && (
+          <>
+            <div className="flex gap-2">
+              <button className="text-blue-500" onClick={handleLike}>
+                Like
+              </button>
+              <p className="text-blue-500">{likes === 0 ? " " : likes}</p>
+            </div>
+            <button className="text-blue-500" onClick={handleDelete}>
+              Delete
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

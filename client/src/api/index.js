@@ -40,8 +40,11 @@ export const updateChecklist = (jobId, status, taskId, isCompleted) =>
   API.put(`/checklist/${jobId}`, { status, taskId, isCompleted });
 
 export const fetchPosts = () => API.get(`/posts`);
+export const fetchPostDetails = (id) => API.get(`/posts/${id}`);
 export const deletePost = (id) => API.delete(`/posts/${id}`);
 export const createPost = (newPost) => API.post(`/posts`, newPost);
+export const commentPost = (id, creator, message) =>
+  API.post(`/posts/comment/${id}`, { creator, message });
 
 export const getTemplates = () => API.get(`/template`);
 
