@@ -12,6 +12,7 @@ def index():
 def extract_keywords():
     if request.method == 'POST':
         data = request.get_json()
+        print(data)
         doc = data.get('doc', '')  # Get the document text from the request
         if doc:
             keywords = kw_model.extract_keywords(doc, keyphrase_ngram_range=(1, 1), stop_words='english', top_n=20)

@@ -22,10 +22,10 @@ const TemplateInout = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input type="text" {...register("uuid")} />
-      <input type="text" {...register("status")} />
-      <input type="text" {...register("subject")} />
-      <textarea type="text" {...register("body")} />
+      <input className="border-2" type="text" {...register("uuid")} />
+      <input className="border-2" type="text" {...register("status")} />
+      <input className="border-2" type="text" {...register("subject")} />
+      <textarea className="border-2" type="text" {...register("body")} />
       <button type="submit">submit</button>
     </form>
   );

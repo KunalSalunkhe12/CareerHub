@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { getTemplates } from "../../api";
 import { AiOutlineMail } from "react-icons/ai";
 import toast from "react-hot-toast";
+import { useOutletContext } from "react-router-dom";
 
 const Templates = () => {
+  const job = useOutletContext();
   const [templates, setTemplates] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -12,7 +14,11 @@ const Templates = () => {
       try {
         setIsLoading(true);
         const { data } = await getTemplates();
-        setTemplates(data[0].templates);
+        const templateData = data.filter(
+          (template) => template.status === job.status
+        );
+        console.log(templateData);
+        setTemplates(templateData[0].templates);
       } catch (error) {
         console.log(error);
       } finally {
@@ -45,11 +51,11 @@ const Templates = () => {
       <div className="flex flex-col gap-5 mt-4">
         {isLoading ? (
           <div>Loading...</div>
-        ) : templates ? (
+        ) : templates.length > 0 ? (
           templates.map((template) => {
             return (
               <div
-                key={template.uuid}
+                key={template._id}
                 className="bg-custom_white p-4 rounded-md border-2 border-gray-200 shadow-md"
               >
                 <p className="font-semibold my-4 text-wh">{template.subject}</p>

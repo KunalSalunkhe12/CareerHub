@@ -4,10 +4,9 @@ const API = axios.create({ baseURL: "http://localhost:5000" });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("Profile")) {
-    let profile = JSON.parse(localStorage.getItem('Profile'))
-    console.log(profile.token)
-    req.headers.Authorization = `Bearer ${profile.token}`
-
+    let profile = JSON.parse(localStorage.getItem("Profile"));
+    console.log(profile.token);
+    req.headers.Authorization = `Bearer ${profile.token}`;
   }
   return req;
 });
@@ -46,4 +45,4 @@ export const createPost = (newPost) => API.post(`/posts`, newPost);
 
 export const getTemplates = () => API.get(`/template`);
 
-export const likePost = (id) => API.patch(`/posts/${id}/like`, { id });
+export const likePost = (id) => API.put(`/posts/${id}/like`, { id });
